@@ -30,15 +30,6 @@ public class CheckAuthorExistAdvice {
     public void checkAuthorExists(JoinPoint joinPoint) {
         log.debug("entered into advice");
 
-        // Method Information
-        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-
-        // get method arg types
-        signature.getParameterTypes();
-
-        // get method arg values
-        joinPoint.getArgs();
-
         List<Object> objectList = Arrays.stream(joinPoint.getArgs()).filter(s -> s.getClass().getName().equalsIgnoreCase("com.vatsal.project.inputvalidationsaopdemo.dto.Book")).collect(Collectors.toList());
         List<Book> bookList = (List<Book>) (Object) objectList;
         for (Book book : bookList) {
